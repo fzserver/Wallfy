@@ -2,7 +2,20 @@
 
 Wallfy is the wallpapers app developed in flutter and dart.
 
-# Libraries used in wallfy app
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
+
+## Develop
+
+Make sure finish [install Flutter](https://flutter.io/get-started/install/) successfully
+
+1. Clone this repo by: `git clone https://github.com/FrazileDevelopers/Wallfy.git`
+2. Install all the packages by: `flutter packages get`
+3. Run app on your simulator by: `flutter run`
+
+## Packages used in wallfy app
 
 1. cupertino_icons
 2. firebase_core
