@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "993930713835",
+    "firebase_url": "https://flutter-884a9.firebaseio.com",
+    "project_id": "flutter-884a9",
+    "storage_bucket": "flutter-884a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993930713835:android:018ba0a1a17bf287",
+        "android_client_info": {
+          "package_name": "com.fl.wallfy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
