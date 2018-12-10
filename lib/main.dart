@@ -34,7 +34,7 @@ class wallfyHome extends StatefulWidget {
 class _wallfyHomeState extends State<wallfyHome> {
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> wallpapersList;
-  final CollectionReference collectionReference = Firestore.instance.collection('wallfy');  
+  final CollectionReference collectionReference = Firestore.instance.collection('wallfy');
 
   @override
     void initState() {
@@ -79,6 +79,7 @@ Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
             child: FadeInImage(
               image: NetworkImage(imgPath),
               fit: BoxFit.cover,
+              placeholder: AssetImage('wallfy.png'),
             ),
           ),
         ),
