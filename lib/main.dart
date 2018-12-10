@@ -74,23 +74,21 @@ Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
     padding: const EdgeInsets.all(8.0),
     crossAxisCount: 4,
     itemCount: wallList.length,
-    itemBuilder: (context, index) {
-      String imgPath = wallList[index].data['url'];
-      return Material(
+    itemBuilder: (context, index) =>
+      Material(
         elevation: 8.0,
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
         child: InkWell(
           child: Hero(
-            tag: imgPath,
+            tag: wallList[index].data['url'],
             child: FadeInImage(
-              image: NetworkImage(imgPath),
+              image: NetworkImage(wallList[index].data['url']),
               fit: BoxFit.cover,
               placeholder: AssetImage('wallfy.png'),
             ),
           ),
         ),
-      );
-    },
+      ),
     staggeredTileBuilder: (index) => StaggeredTile.count(2, index.isEven ? 2 : 3),
     mainAxisSpacing: 8.0,
     crossAxisSpacing: 8.0,
