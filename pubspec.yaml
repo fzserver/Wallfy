@@ -21,7 +21,7 @@ dependencies:
   cupertino_icons:
   firebase_core:
   firebase_analytics:
-  cloud_firestore:
+  cloud_firestore: ^0.8.2+1
   flutter_staggered_grid_view:
 
 dev_dependencies:

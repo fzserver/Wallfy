@@ -34,17 +34,23 @@ class wallfyHome extends StatefulWidget {
 class _wallfyHomeState extends State<wallfyHome> {
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> wallpapersList;
-  final CollectionReference collectionReference = Firestore.instance.collection('wallfy');
 
   @override
     void initState() {
       super.initState();
-      subscription = collectionReference.snapshots().listen((datasnapshot){
-        setState(() {
-          wallpapersList = datasnapshot.documents;     
-        });
-      });
+      firestore();
     }
+
+  void firestore() async {
+    final Firestore firestore = Firestore();
+    await firestore.settings(timestampsInSnapshotsEnabled: true);
+    final CollectionReference collectionReference = firestore.collection('wallfy');
+    subscription = collectionReference.snapshots().listen((datasnapshot){
+      setState(() {
+        wallpapersList = datasnapshot.documents;     
+      });
+      });
+  }
     
   @override
     void dispose() {
@@ -70,7 +76,7 @@ Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
     itemCount: wallList.length,
     itemBuilder: (context, index) {
       String imgPath = wallList[index].data['url'];
-      Material(
+      return Material(
         elevation: 8.0,
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
         child: InkWell(
