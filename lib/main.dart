@@ -75,7 +75,11 @@ Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
         child: InkWell(
           child: Hero(
-            
+            tag: imgPath,
+            child: FadeInImage(
+              image: NetworkImage(imgPath),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       );

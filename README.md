@@ -1,16 +1,11 @@
 # wallfy
 
-A new Flutter project.
+Wallfy is the wallpapers app developed in flutter and dart.
 
-## Getting Started
+# Libraries used in wallfy app
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+1. cupertino_icons
+2. firebase_core
+3. firebase_analytics
+4. cloud_firestore
+5. flutter_staggered_grid_view
