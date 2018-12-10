@@ -1,5 +1,5 @@
 name: Wallfy
-description: A new Flutter project.
+description: Wallfy is the wallpapers app developed in flutter and dart.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -22,6 +22,7 @@ dependencies:
   firebase_core:
   firebase_analytics:
   cloud_firestore:
+  flutter_staggered_grid_view:
 
 dev_dependencies:
   flutter_test:
