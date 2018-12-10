@@ -1,4 +1,4 @@
-# wallfy
+# Wallfy
 
 Wallfy is the wallpapers app developed in flutter and dart.
 
