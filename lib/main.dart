@@ -1,3 +1,7 @@
+import 'package:Wallfy/FullScreenImage.dart';
+import 'package:Wallfy/MenuItems.dart';
+import 'package:Wallfy/about.dart';
+import 'package:Wallfy/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
@@ -6,9 +10,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:async';
 
 
-void main() => runApp(wallfy());
+void main() => runApp(Wallfy());
 
-class wallfy extends StatelessWidget {
+class Wallfy extends StatelessWidget {
 
   static FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: firebaseAnalytics);
@@ -19,19 +23,19 @@ class wallfy extends StatelessWidget {
      title: "Wallfy",
      debugShowCheckedModeBanner: false,
      navigatorObservers: <NavigatorObserver>[observer],
-      home: wallfyHome(),
+      home: WallfyHome(),
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
     );
 }
 
-class wallfyHome extends StatefulWidget {
+class WallfyHome extends StatefulWidget {
   @override
-  _wallfyHomeState createState() => _wallfyHomeState();
+  _WallfyHomeState createState() => _WallfyHomeState();
 }
 
-class _wallfyHomeState extends State<wallfyHome> {
+class _WallfyHomeState extends State<WallfyHome> {
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> wallpapersList;
 
@@ -63,9 +67,41 @@ class _wallfyHomeState extends State<wallfyHome> {
     Scaffold(
       appBar: AppBar(
         title: Text('Wallfy'),
+        actions: <Widget>[
+          PopupMenuButton<MenuItems>(
+            elevation: 3.0,
+            onCanceled: () => {},
+            tooltip: "Menu",
+            onSelected: selectedMenuItem,
+            itemBuilder: (BuildContext context){
+              return menu.map((MenuItems menuItem) {
+                return PopupMenuItem<MenuItems> (
+                  value: menuItem,
+                  child: Text(menuItem.title),
+                );
+              }).toList();
+            },
+          ),
+          Padding(padding: const EdgeInsets.only(right: 2.0),),
+        ],
       ),
       body: wallurls(context, wallpapersList),
     );
+
+  void selectedMenuItem(MenuItems menu) {
+    if (menu.id == 0) { 
+      Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+    } else {
+      if (menu.id == 1) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+      }
+    }
+  }
+
+  static const List<MenuItems> menu = const <MenuItems>[
+    const MenuItems(id: 0, title: 'About'),
+    const MenuItems(id: 1, title: 'Settings'),
+  ];
 }
 
 Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
@@ -97,53 +133,3 @@ Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
     crossAxisSpacing: 8.0,
   )
   : Center(child: CircularProgressIndicator(),);
-
-
-  class FullScreenImage extends StatelessWidget {
-    final String imgPath;
-    FullScreenImage(this.imgPath);
-
-    final LinearGradient backgroundGradient = LinearGradient(
-      colors: [Color(0x10000000), Color(0x30000000)],
-      begin: Alignment.topLeft, 
-      end: Alignment.bottomRight
-    );
-
-    @override
-    Widget build(BuildContext context)
-    =>  Scaffold(
-        body: SizedBox.expand(
-          child: Container(
-            decoration: BoxDecoration(gradient: backgroundGradient),
-            child: Stack(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.center,
-                  child: Hero(
-                    tag: imgPath,
-                    child: Image.network(imgPath),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      AppBar(
-                        elevation: 0.0,
-                        backgroundColor: Colors.transparent,
-                        leading: IconButton(
-                          icon: Icon(Icons.close, color: Colors.black,),
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    }

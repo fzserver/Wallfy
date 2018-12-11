@@ -23,6 +23,7 @@ dependencies:
   firebase_analytics:
   cloud_firestore: ^0.8.2+1
   flutter_staggered_grid_view:
+  launch_review:
 
 dev_dependencies:
   flutter_test:

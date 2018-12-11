@@ -2,6 +2,12 @@
 
 Wallfy is the wallpapers app developed in flutter and dart.
 
+## Check the app on the Google Play Store
+
+<a href='#'>
+  <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='200'/>
+</a>
+
 ## Getting Started
 
 For help getting started with Flutter, view our online
