@@ -25,23 +25,23 @@ class FullScreenImage extends StatelessWidget {
                   child: Image.network(imgPath),
                 ),
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    AppBar(
-                      elevation: 0.0,
-                      backgroundColor: Colors.transparent,
-                      leading: IconButton(
-                        icon: Icon(Icons.close, color: Colors.black,),
-                        onPressed: () => Navigator.of(context).pop(),
-                      ),
-                    )
-                  ],
-                ),
-              )
+              // Align(
+              //   alignment: Alignment.topCenter,
+              //   child: Column(
+              //     mainAxisAlignment: MainAxisAlignment.start,
+              //     mainAxisSize: MainAxisSize.min,
+              //     children: <Widget>[
+              //       AppBar(
+              //         elevation: 0.0,
+              //         backgroundColor: Colors.transparent,
+              //         leading: IconButton(
+              //           icon: Icon(Icons.close, color: Colors.black,),
+              //           onPressed: () => Navigator.of(context).pop(),
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // )
             ],
           ),
         ),

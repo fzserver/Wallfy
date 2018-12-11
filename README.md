@@ -28,3 +28,7 @@ Make sure finish [install Flutter](https://flutter.io/get-started/install/) succ
 3. firebase_analytics
 4. cloud_firestore
 5. flutter_staggered_grid_view
+
+## Steps to publish app to the Google Play Store
+
+1. 
