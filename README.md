@@ -31,4 +31,4 @@ Make sure finish [install Flutter](https://flutter.io/get-started/install/) succ
 
 ## Steps to publish app to the Google Play Store
 
-1. 
+Going to publish...
