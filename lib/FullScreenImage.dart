@@ -1,4 +1,10 @@
+import 'dart:math';
+
+import 'package:dio/dio.dart';
+import 'package:file_utils/file_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:simple_permissions/simple_permissions.dart';
 
 class FullScreenImage extends StatefulWidget {
   final String imgPath;
@@ -10,6 +16,49 @@ class FullScreenImage extends StatefulWidget {
 }
 
 class FullScreenImageState extends State<FullScreenImage> with SingleTickerProviderStateMixin {
+
+  bool downloading = false;
+  var progress = "";
+  Permission permission1 = Permission.WriteExternalStorage;
+  static final Random random = Random();
+
+  Future<void> downloadFile(String imgUrl) async {
+  Dio dio = Dio();
+  bool checkPermission1 = await SimplePermissions.checkPermission(permission1);
+  // print(checkPermission1);
+  if (checkPermission1 == false) { 
+    await SimplePermissions.requestPermission(permission1);
+    checkPermission1 = await SimplePermissions.checkPermission(permission1);
+  }
+  if (checkPermission1 == true) {
+    
+    var dir = await getExternalStorageDirectory();
+    var dirloc = "${dir.path}/Wallfy/";
+    var randid = random.nextInt(10000);
+
+    try {
+      FileUtils.mkdir([dirloc]);
+      await dio.download(imgUrl, dirloc + randid.toString() + ".jpg",
+        onProgress: (receivedBytes, totalBytes) {
+          setState(() {
+            downloading = true;
+            progress = ((receivedBytes/totalBytes) * 100).toStringAsFixed(0) + "%";
+          });
+        } );
+    } catch(e) {
+      print(e);
+    }
+
+    setState(() {
+      downloading = false;
+      progress = "Download Completed.";
+    });
+  } else {
+    setState(() {
+      progress = "Permission Denied!";
+    });
+  }
+  }
 
   final LinearGradient backgroundGradient = LinearGradient(
     colors: [Color(0x10000000), Color(0x30000000)],
@@ -37,41 +86,44 @@ class FullScreenImageState extends State<FullScreenImage> with SingleTickerProvi
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        // child: downloading
-        // ? 
-        // Container(
-        //   decoration: BoxDecoration(gradient: backgroundGradient),
-        //   child: Stack(
-        //     children: <Widget>[
-        //       Align(
-        //         alignment: Alignment.center,
-        //         child: Hero(
-        //           tag: widget.imgPath,
-        //           child: FadeInImage(
-        //             image: NetworkImage(widget.imgPath),
-        //             fit: BoxFit.cover,
-        //             placeholder: AssetImage('wallfy.png'),
-        //           ),
-        //         ),
-        //       ),
-        //       Align(
-        //         alignment: Alignment.topCenter,
-        //         child: Card(
-        //           color: Colors.transparent,
-        //           child: Column(
-        //             mainAxisAlignment: MainAxisAlignment.center,
-        //             children: <Widget>[
-        //               CircularProgressIndicator(),
-        //               SizedBox(height: 10.0,),
-        //               Text('$progress', style: TextStyle(color: Colors.white),),
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ): 
-        child: Container(
+        child: downloading
+        ? 
+        Container(
+          decoration: BoxDecoration(gradient: backgroundGradient),
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.center,
+                child: Hero(
+                  tag: widget.imgPath,
+                  child: FadeInImage(
+                    image: NetworkImage(widget.imgPath),
+                    fit: BoxFit.cover,
+                    placeholder: AssetImage('wallfy.png'),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  color: Colors.black45,
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      CircularProgressIndicator(),
+                      SizedBox(height: 10.0,),
+                      Text('Downloaded: $progress', style: TextStyle(color: Colors.white),),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ): 
+        Container(
           decoration: BoxDecoration(gradient: backgroundGradient),
           child: Stack(
             children: <Widget>[
@@ -101,7 +153,7 @@ class FullScreenImageState extends State<FullScreenImage> with SingleTickerProvi
                       minWidth: double.infinity,
                       child: Text(
                         'DOWNLOAD IMAGE'
-                      ), onPressed: () => {},
+                      ), onPressed: () => downloadFile(widget.imgPath),
                     )
                   ],
                 ),
