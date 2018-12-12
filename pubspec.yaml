@@ -21,9 +21,13 @@ dependencies:
   cupertino_icons:
   firebase_core:
   firebase_analytics:
-  cloud_firestore: ^0.8.2+1
+  cloud_firestore: ^0.8.2+3
   flutter_staggered_grid_view:
   launch_review:
+  dio:
+  path_provider:
+  simple_permissions:
+  file_utils:
 
 dev_dependencies:
   flutter_test:
