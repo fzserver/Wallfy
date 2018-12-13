@@ -55,7 +55,7 @@ subprojects {
    }
 }
 ```
-** To **
+**To**
 
 ```gradle
 subprojects {
@@ -80,9 +80,9 @@ Going to publish...
 
 This project needs you! If you would like to support this project's further upgradations, the creator of this project or the continuous maintenance of this project, feel free to donate. Your donation is highly appreciated (and I love food, coffee and beer). Thank you!
 
-** Paypal **
+**Paypal**
 
-** For All Developers **
+**For All Developers**
 
 * **[Donate £5](https://www.paypal.me/frazile/GBP5)**: Thank's for creating this project, here's a coffee or juice or beer for you!
 * **[Donate £10](https://www.paypal.me/frazile/GBP10)**: Wow, I am stunned. Let me take you to the movies.
