@@ -39,7 +39,7 @@ Make sure finish [install Flutter](https://flutter.io/get-started/install/) succ
 
 1. AndroidManifest.xml is located in 'android/app/src/main/AndroidManifest.xml'
 2. Add permissions under '<uses-permission android:name="android.permission.INTERNET"/>'
-```
+```xml
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 ```
@@ -48,14 +48,16 @@ Make sure finish [install Flutter](https://flutter.io/get-started/install/) succ
 
 1. build.gradle is located in 'android/build.gradle'
 2. Change the code located in build.gradle
-```
+
+```gradle
 subprojects {
     project.evaluationDependsOn(':app')
    }
 }
 ```
 ** To **
-```
+
+```gradle
 subprojects {
     project.evaluationDependsOn(':app')
         project.configurations.all {
@@ -82,27 +84,27 @@ This project needs you! If you would like to support this project's further upgr
 
 ** For All Developers **
 
-* ** [Donate £5](https://www.paypal.me/frazile/GBP5)**: Thank's for creating this project, here's a coffee or juice or beer for you!
-* ** [Donate £10](https://www.paypal.me/frazile/GBP10)**: Wow, I am stunned. Let me take you to the movies.
-* ** [Donate £15](https://www.paypal.me/frazile/GBP15)**: I really appreciate your work, let's grab some lunch!
-* ** [Donate £20](https://www.paypal.me/frazile/GBP20)**: That's some awesome stuff you did right there, dinner is on me!
-* ** [Donate £25](https://www.paypal.me/frazile/GBP25)**: That's some awesome stuff you did right there, dinner is on me!
-* ** [Donate £30](https://www.paypal.me/frazile/GBP30)**: I really really want to support this project, great job!
-* ** [Donate £35](https://www.paypal.me/frazile/GBP35)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £40](https://www.paypal.me/frazile/GBP40)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £45](https://www.paypal.me/frazile/GBP45)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £50](https://www.paypal.me/frazile/GBP50)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £60](https://www.paypal.me/frazile/GBP60)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £70](https://www.paypal.me/frazile/GBP70)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £80](https://www.paypal.me/frazile/GBP80)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £90](https://www.paypal.me/frazile/GBP90)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £100](https://www.paypal.me/frazile/GBP100)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
-* ** [Donate £500](https://www.paypal.me/frazile/GBP500)**: Go buddy, buy Macbook Pro for yourself!
-* ** [Donate £1000](https://www.paypal.me/frazile/GBP1000)**: Go buddy, buy Macbook Pro for yourself!
-* ** [Donate £1500](https://www.paypal.me/frazile/GBP1500)**: Go buddy, buy Macbook Pro for yourself!
-* ** [Donate £2000](https://www.paypal.me/frazile/GBP2000)**: Go buddy, buy Macbook Pro for yourself!
-* ** [Donate £2500](https://www.paypal.me/frazile/GBP2500)**: Go buddy, buy Macbook Pro for yourself!
-* ** [Donate £3000](https://www.paypal.me/frazile/GBP3000)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £5](https://www.paypal.me/frazile/GBP5)**: Thank's for creating this project, here's a coffee or juice or beer for you!
+* **[Donate £10](https://www.paypal.me/frazile/GBP10)**: Wow, I am stunned. Let me take you to the movies.
+* **[Donate £15](https://www.paypal.me/frazile/GBP15)**: I really appreciate your work, let's grab some lunch!
+* **[Donate £20](https://www.paypal.me/frazile/GBP20)**: That's some awesome stuff you did right there, dinner is on me!
+* **[Donate £25](https://www.paypal.me/frazile/GBP25)**: That's some awesome stuff you did right there, dinner is on me!
+* **[Donate £30](https://www.paypal.me/frazile/GBP30)**: I really really want to support this project, great job!
+* **[Donate £35](https://www.paypal.me/frazile/GBP35)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £40](https://www.paypal.me/frazile/GBP40)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £45](https://www.paypal.me/frazile/GBP45)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £50](https://www.paypal.me/frazile/GBP50)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £60](https://www.paypal.me/frazile/GBP60)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £70](https://www.paypal.me/frazile/GBP70)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £80](https://www.paypal.me/frazile/GBP80)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £90](https://www.paypal.me/frazile/GBP90)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £100](https://www.paypal.me/frazile/GBP100)**: You are the man! This project saved me hours (if not days) of struggle and hard work, simply awesome!
+* **[Donate £500](https://www.paypal.me/frazile/GBP500)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £1000](https://www.paypal.me/frazile/GBP1000)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £1500](https://www.paypal.me/frazile/GBP1500)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £2000](https://www.paypal.me/frazile/GBP2000)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £2500](https://www.paypal.me/frazile/GBP2500)**: Go buddy, buy Macbook Pro for yourself!
+* **[Donate £3000](https://www.paypal.me/frazile/GBP3000)**: Go buddy, buy Macbook Pro for yourself!
 
 Of course, you can also choose what you want to donate, all donations are awesome!
 
