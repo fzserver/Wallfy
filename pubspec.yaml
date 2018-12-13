@@ -28,6 +28,7 @@ dependencies:
   path_provider:
   simple_permissions:
   file_utils:
+  package_info:
 
 dev_dependencies:
   flutter_test:
