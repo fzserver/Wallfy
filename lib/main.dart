@@ -8,9 +8,18 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:async';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
+// import 'package:admob_flutter/admob_flutter.dart';
 
-
-void main() => runApp(Wallfy());
+void main() { 
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]); 
+  // Set status bar color with: Color(0xFF0000FF) also or ->
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.pink,)); 
+  // Initialize AdMob
+  // Admob.initialize('ca-app-pub-7600031190372955~4233772250');
+  runApp(Wallfy());
+}
 
 class Wallfy extends StatelessWidget {
 
@@ -43,6 +52,10 @@ class _WallfyHomeState extends State<WallfyHome> {
     void initState() {
       super.initState();
       firestore();
+      // AdmobBanner(
+      //   adUnitId: "ca-app-pub-7600031190372955/8496524276",
+      //   adSize: AdmobBannerSize.SMART_BANNER,
+      // );
     }
 
   void firestore() async {

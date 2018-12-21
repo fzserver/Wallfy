@@ -8,9 +8,71 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993930713835:android:018ba0a1a17bf287",
+        "mobilesdk_app_id": "1:993930713835:android:bd84eeb6bdaefd31",
         "android_client_info": {
-          "package_name": "com.fl.wallfy"
+          "package_name": "com.fl.flutterfirebaselogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993930713835:android:934fc229003d80b1",
+        "android_client_info": {
+          "package_name": "com.pa.flutterfirebaselogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993930713835:android:1755aefa2126b174",
+        "android_client_info": {
+          "package_name": "com.pa.wallfy"
         }
       },
       "oauth_client": [

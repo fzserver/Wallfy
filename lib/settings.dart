@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:package_info/package_info.dart';
+import 'package:flutter/foundation.dart';
 
 class Settings extends StatefulWidget {
 

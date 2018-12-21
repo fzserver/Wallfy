@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:flutter/foundation.dart';
 import 'package:dio/dio.dart';
 import 'package:file_utils/file_utils.dart';
 import 'package:flutter/material.dart';
@@ -136,6 +136,25 @@ class FullScreenImageState extends State<FullScreenImage> with SingleTickerProvi
                     fit: BoxFit.cover,
                     placeholder: AssetImage('wallfy.png'),
                   ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    AppBar(
+                      elevation: 0.0,
+                      backgroundColor: Colors.transparent,
+                      leading: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,),
+                          onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    )
+                  ],
                 ),
               ),
               Align(
