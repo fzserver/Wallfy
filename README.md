@@ -74,7 +74,119 @@ subprojects {
 
 ## Steps to publish app to the Google Play Store
 
-Going to publish...
+1. Enter the command in the terminal –>
+
+```shell
+keytool -genkey -v -keystore ~/Documents/appname.jks -keyalg RSA -keysize 2048 -validity 20000 -alias appname
+```
+2. It asks for keystore Password. Enter a password which you remember as we need it afterwards –>
+
+```
+P@$$@123
+```
+3. It asks for first and last name. Enter your name ->
+
+```
+Full Name
+```
+4. It asks for organizational unit. Enter your organization unit or skip by pressing 'Enter' –>
+
+```
+Organizational Unit
+```
+5. It asks for organizational name. Enter your organization name or skip by pressing 'Enter' –>
+
+```
+Organizational Name
+```
+6. It asks for City or Locality. Enter your city/locality or skip by pressing 'Enter' –>
+
+```
+City
+```
+7. It asks for State or Province. Enter your state/province or skip by pressing 'Enter' –>
+
+```
+State
+```
+8. It asks for two-letter country code for this unit. Enter your country code or skip by pressing 'Enter' –>
+
+```
+US
+```
+9. It confirms the details you have entered above. If they are correct type 'yes' & press 'Enter' else if you want to correct them then simply press 'Enter' which means 'no' –>
+
+```
+yes
+```
+10. The key is generated.
+11. Now in your flutter project in your 'android/' directory. Create a new file named 'key.properties' & put the values in it –>
+
+```properties
+storePassword=P@$$@123
+keyPassword=P@$$@123
+keyAlias=wallfy
+storeFile=/Users/home/Documents/appname.jks
+```
+12. Go to app level build.gradle. Location 'android/app/build.gradle'.
+13. Add the code above `android {` –>
+
+```gradle
+def keystorePropertiesFile = rootProject.file('key.properties')
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+android {
+```
+14. Add the code above `buildTypes {` –>
+
+```gradle
+signingConfigs {
+    release {
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+        storeFile file(keystoreProperties['storeFile'])
+        storePassword keystoreProperties['storePassword']
+    }
+}
+```
+15. Replace a code in same file –>
+
+## Old code
+
+```gradle
+buildTypes {
+    release {
+        // TODO: Add your own signing config for the release build.
+        // Signing with the debug keys for now, so `flutter run --release` works.
+        signingConfig signingConfigs.debug
+    }
+}
+```
+
+## Replaced code
+
+```gradle
+buildTypes {
+    release {
+        // TODO: Add your own signing config for the release build.
+        // Signing with the debug keys for now, so `flutter run --release` works.
+        signingConfig signingConfigs.release
+    }
+}
+```
+16. We are done setting up all things. Now in terminal run build apk command –>
+
+```shell
+flutter build apk --release
+```
+17. If every thing is correct then 'apk will be realeased'.
+18. APK File is located in the flutter project's folder. You can go to the folder from terminal also –>
+
+```shell
+cd ~/Documents/flutterproject/build/app/outputs/apk/release/app-release.apk
+```
+19. Upload it to Google play store.
+20. Enjoy It.
 
 ## 💰 Donations
 

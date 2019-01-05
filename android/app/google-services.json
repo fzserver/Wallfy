@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "993930713835",
-    "firebase_url": "https://flutter-884a9.firebaseio.com",
-    "project_id": "flutter-884a9",
-    "storage_bucket": "flutter-884a9.appspot.com"
+    "project_number": "163966808867",
+    "firebase_url": "https://wallpapers-1e721.firebaseio.com",
+    "project_id": "wallpapers-1e721",
+    "storage_bucket": "wallpapers-1e721.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993930713835:android:bd84eeb6bdaefd31",
+        "mobilesdk_app_id": "1:163966808867:android:f4e6f4e57c426d71",
         "android_client_info": {
-          "package_name": "com.fl.flutterfirebaselogin"
+          "package_name": "com.mg.cryptostocks"
         }
       },
       "oauth_client": [
         {
-          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_id": "163966808867-4dl5s8c7rc7hbk52iljqpi0j4jkrup0s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+          "current_key": "AIzaSyAm32ybzbCCNtFPFbzC90fjQerEhs-_8V8"
         }
       ],
       "services": {
@@ -35,24 +35,25 @@
         "ads_service": {
           "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-7600031190372955~4233772250"
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993930713835:android:934fc229003d80b1",
+        "mobilesdk_app_id": "1:163966808867:android:2db503167bdd9c33",
         "android_client_info": {
-          "package_name": "com.pa.flutterfirebaselogin"
+          "package_name": "com.mg.wallfy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_id": "163966808867-4dl5s8c7rc7hbk52iljqpi0j4jkrup0s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+          "current_key": "AIzaSyAm32ybzbCCNtFPFbzC90fjQerEhs-_8V8"
         }
       ],
       "services": {
@@ -66,24 +67,25 @@
         "ads_service": {
           "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-7600031190372955~9885898032"
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993930713835:android:1755aefa2126b174",
+        "mobilesdk_app_id": "1:163966808867:android:f1a01729a30eacfe",
         "android_client_info": {
-          "package_name": "com.pa.wallfy"
+          "package_name": "com.mukundgoenka.amoledwallpapers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "993930713835-3ufmn6ih7g5krntffd9id1r5i2kf7f68.apps.googleusercontent.com",
+          "client_id": "163966808867-4dl5s8c7rc7hbk52iljqpi0j4jkrup0s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVjvKsh8X0W-xjD6kC3I1J5uK1jAF-35E"
+          "current_key": "AIzaSyAm32ybzbCCNtFPFbzC90fjQerEhs-_8V8"
         }
       ],
       "services": {
@@ -97,7 +99,8 @@
         "ads_service": {
           "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-7600031190372955~1078335112"
     }
   ],
   "configuration_version": "1"

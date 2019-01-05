@@ -29,7 +29,7 @@ dependencies:
   simple_permissions:
   file_utils:
   package_info:
-  # admob_flutter:
+  firebase_admob:
 
 dev_dependencies:
   flutter_test:
