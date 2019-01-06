@@ -159,9 +159,9 @@ class FullScreenImageState extends State<FullScreenImage> with SingleTickerProvi
                 ),
               ),
               Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.bottomCenter,
                   child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     MaterialButton(
@@ -174,7 +174,10 @@ class FullScreenImageState extends State<FullScreenImage> with SingleTickerProvi
                       child: Text(
                         'DOWNLOAD IMAGE'
                       ), onPressed: () => downloadFile(widget.imgPath),
-                    )
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 50.0),
+                    ),
                   ],
                 ),
                 ),

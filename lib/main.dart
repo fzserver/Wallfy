@@ -47,7 +47,7 @@ class WallfyHome extends StatefulWidget {
 
 class _WallfyHomeState extends State<WallfyHome> {
   static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
-    testDevices: <String>[],
+    testDevices: <String>["52161986C14504D2EE7019AAC96D045E"],
     keywords: <String>['WALLPAPERS', 'WALLS', 'AMOLED', 'Clothing'],
     childDirected: true,
   );
@@ -81,7 +81,6 @@ class _WallfyHomeState extends State<WallfyHome> {
     _bannerAd = createBannerAd()
       ..load()
       ..show();
-    _interstitialAd = createInterstitialAd()..load();
     firestore();
   }
 
@@ -90,7 +89,7 @@ class _WallfyHomeState extends State<WallfyHome> {
     await firestore.settings(timestampsInSnapshotsEnabled: true);
     final CollectionReference collectionReference =
         firestore.collection('wallfy');
-    subscription = collectionReference.snapshots().listen((datasnapshot) =>
+    subscription = collectionReference.orderBy("url", descending: true).snapshots().listen((datasnapshot) =>
         setState(() => wallpapersList = datasnapshot.documents));
   }
 
@@ -156,7 +155,9 @@ class _WallfyHomeState extends State<WallfyHome> {
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     child: InkWell(
                       onTap: () {
-                        _interstitialAd..show();
+                        createInterstitialAd()
+                          ..load()
+                          ..show();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
