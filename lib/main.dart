@@ -47,25 +47,31 @@ class WallfyHome extends StatefulWidget {
 
 class _WallfyHomeState extends State<WallfyHome> {
   static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
-    testDevices: <String>["52161986C14504D2EE7019AAC96D045E"],
-    keywords: <String>['wallpapers', 'walls', 'amoled'],
+    testDevices: <String>[],
+    keywords: <String>['WALLPAPERS', 'WALLS', 'AMOLED', 'Clothing'],
     childDirected: true,
   );
 
   BannerAd _bannerAd;
+  InterstitialAd _interstitialAd;
 
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> wallpapersList;
 
-  BannerAd createBannerAd() {
-    return new BannerAd(
-        adUnitId: "ca-app-pub-7600031190372955/1392384246",
-        size: AdSize.smartBanner,
-        targetingInfo: targetInfo,
-        listener: (MobileAdEvent event) {
-          print("Banner event : $event");
-        });
-  }
+  BannerAd createBannerAd() => BannerAd(
+      adUnitId: "ca-app-pub-7600031190372955/4833025090",
+      size: AdSize.smartBanner,
+      targetingInfo: targetInfo,
+      listener: (MobileAdEvent event) {
+        print("Banner event : $event");
+      });
+
+  InterstitialAd createInterstitialAd() => InterstitialAd(
+      adUnitId: "ca-app-pub-7600031190372955/6812143564",
+      targetingInfo: targetInfo,
+      listener: (MobileAdEvent event) {
+        print("Banner event : $event");
+      });
 
   @override
   void initState() {
@@ -75,6 +81,7 @@ class _WallfyHomeState extends State<WallfyHome> {
     _bannerAd = createBannerAd()
       ..load()
       ..show();
+    _interstitialAd = createInterstitialAd()..load();
     firestore();
   }
 
@@ -90,6 +97,7 @@ class _WallfyHomeState extends State<WallfyHome> {
   @override
   void dispose() {
     _bannerAd?.dispose();
+    _interstitialAd?.dispose();
     subscription?.cancel();
     super.dispose();
   }
@@ -136,38 +144,41 @@ class _WallfyHomeState extends State<WallfyHome> {
     const MenuItems(id: 0, title: 'About'),
     const MenuItems(id: 1, title: 'Settings'),
   ];
-}
 
-Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
-    wallList != null
-        ? StaggeredGridView.countBuilder(
-            padding: const EdgeInsets.all(8.0),
-            crossAxisCount: 4,
-            itemCount: wallList.length,
-            itemBuilder: (context, index) => Material(
-                  elevation: 8.0,
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  child: InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                FullScreenImage(wallList[index].data['url']))),
-                    child: Hero(
-                      tag: wallList[index].data['url'],
-                      child: FadeInImage(
-                        image: NetworkImage(wallList[index].data['url']),
-                        fit: BoxFit.cover,
-                        placeholder: AssetImage('wallfy.png'),
+  Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
+      wallList != null
+          ? StaggeredGridView.countBuilder(
+              padding: const EdgeInsets.all(8.0),
+              crossAxisCount: 4,
+              itemCount: wallList.length,
+              itemBuilder: (context, index) => Material(
+                    elevation: 8.0,
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    child: InkWell(
+                      onTap: () {
+                        _interstitialAd..show();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FullScreenImage(
+                                    wallList[index].data['url'])));
+                      },
+                      child: Hero(
+                        tag: wallList[index].data['url'],
+                        child: FadeInImage(
+                          image: NetworkImage(wallList[index].data['url']),
+                          fit: BoxFit.cover,
+                          placeholder: AssetImage('wallfy.png'),
+                        ),
                       ),
                     ),
                   ),
-                ),
-            staggeredTileBuilder: (index) =>
-                StaggeredTile.count(2, index.isEven ? 2 : 3),
-            mainAxisSpacing: 8.0,
-            crossAxisSpacing: 8.0,
-          )
-        : Center(
-            child: CircularProgressIndicator(),
-          );
+              staggeredTileBuilder: (index) =>
+                  StaggeredTile.count(2, index.isEven ? 2 : 3),
+              mainAxisSpacing: 8.0,
+              crossAxisSpacing: 8.0,
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            );
+}
