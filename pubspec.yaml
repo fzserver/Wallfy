@@ -30,7 +30,7 @@ dependencies:
   file_utils:
   package_info:
   firebase_admob:
-  # flutter_inapp_purchase:
+  flutter_inapp_purchase:
 
 dev_dependencies:
   flutter_test:

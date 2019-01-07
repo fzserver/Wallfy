@@ -11,7 +11,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_admob/firebase_admob.dart';
-// import 'package:admob_flutter/admob_flutter.dart';
+import 'package:Wallfy/donate.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations(
@@ -48,7 +48,14 @@ class WallfyHome extends StatefulWidget {
 class _WallfyHomeState extends State<WallfyHome> {
   static final MobileAdTargetingInfo targetInfo = MobileAdTargetingInfo(
     testDevices: <String>["52161986C14504D2EE7019AAC96D045E"],
-    keywords: <String>['WALLPAPERS', 'WALLS', 'AMOLED', 'Clothing', 'Gaming', 'Hitman'],
+    keywords: <String>[
+      'WALLPAPERS',
+      'WALLS',
+      'AMOLED',
+      'Clothing',
+      'Gaming',
+      'Hitman'
+    ],
     childDirected: true,
   );
 
@@ -86,11 +93,15 @@ class _WallfyHomeState extends State<WallfyHome> {
 
   void firestore() async {
     final Firestore firestore = Firestore();
-    await firestore.settings(timestampsInSnapshotsEnabled: true, persistenceEnabled: true);
+    await firestore.settings(
+        timestampsInSnapshotsEnabled: true, persistenceEnabled: true);
     final CollectionReference collectionReference =
         firestore.collection('wallfy');
-    subscription = collectionReference.orderBy("url", descending: true).snapshots().listen((datasnapshot) =>
-        setState(() => wallpapersList = datasnapshot.documents));
+    subscription = collectionReference
+        .orderBy("url", descending: true)
+        .snapshots()
+        .listen((datasnapshot) =>
+            setState(() => wallpapersList = datasnapshot.documents));
   }
 
   @override
@@ -129,19 +140,34 @@ class _WallfyHomeState extends State<WallfyHome> {
       );
 
   void selectedMenuItem(MenuItems menu) {
-    if (menu.id == 0) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
-    } else {
-      if (menu.id == 1) {
+    switch (menu.id) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => About()));
+        break;
+      case 1:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Settings()));
-      }
+        break;
+      case 2:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Donate()));
+        break;
     }
+    // if (menu.id == 0) {
+    //   Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+    // } else {
+    //   if (menu.id == 1) {
+    //     Navigator.push(
+    //         context, MaterialPageRoute(builder: (context) => Settings()));
+    //   }
+    // }
   }
 
   static const List<MenuItems> menu = const <MenuItems>[
     const MenuItems(id: 0, title: 'About'),
     const MenuItems(id: 1, title: 'Settings'),
+    const MenuItems(id: 2, title: 'Donate'),
   ];
 
   Widget wallurls(BuildContext context, List<DocumentSnapshot> wallList) =>
