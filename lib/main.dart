@@ -46,9 +46,9 @@ class WallfyHome extends StatefulWidget {
 }
 
 class _WallfyHomeState extends State<WallfyHome> {
-  static final MobileAdTargetingInfo targetInfo = new MobileAdTargetingInfo(
+  static final MobileAdTargetingInfo targetInfo = MobileAdTargetingInfo(
     testDevices: <String>["52161986C14504D2EE7019AAC96D045E"],
-    keywords: <String>['WALLPAPERS', 'WALLS', 'AMOLED', 'Clothing'],
+    keywords: <String>['WALLPAPERS', 'WALLS', 'AMOLED', 'Clothing', 'Gaming', 'Hitman'],
     childDirected: true,
   );
 
@@ -86,7 +86,7 @@ class _WallfyHomeState extends State<WallfyHome> {
 
   void firestore() async {
     final Firestore firestore = Firestore();
-    await firestore.settings(timestampsInSnapshotsEnabled: true);
+    await firestore.settings(timestampsInSnapshotsEnabled: true, persistenceEnabled: true);
     final CollectionReference collectionReference =
         firestore.collection('wallfy');
     subscription = collectionReference.orderBy("url", descending: true).snapshots().listen((datasnapshot) =>

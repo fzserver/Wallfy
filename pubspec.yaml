@@ -7,7 +7,7 @@ description: Wallfy is the wallpapers app developed in flutter and dart.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.2+3
+version: 1.0.3+4
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
@@ -22,7 +22,7 @@ dependencies:
   firebase_core:
   firebase_analytics:
   cloud_firestore: ^0.8.2+3
-  flutter_staggered_grid_view:
+  flutter_staggered_grid_view: ^0.2.5
   launch_review:
   dio:
   path_provider:
