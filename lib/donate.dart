@@ -9,9 +9,8 @@ class Donate extends StatefulWidget {
 }
 
 class _DonateState extends State<Donate> {
-  static const String iapIdtest = 'android.test.purchased';
-  static const String iapId =
-      'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqm0kTtEUXAzlWagkqrc2n0NaFdmIQQ3IHG2OIJ/dWmSyYIXOSwWW6srbsqOXiIbvqFB17vOkkzuKX9jc1QNVQ9p88ORVhJHQ7FIDO4pgIPLp17KZ2VMPAWGlIAaIQTrKyyQH/Z0XmA7CGIjXQvIc5LHNB76q9iJvGLwBE8kf+z7Hm1dEfbag2A9bEXgk/lWJW0bEbj1N21IoJBMS6Mg3WK/gz3yBo2xLE0XExG13R+xIvo+SxHWcPswiP256NUTDEbJTBu81vrneBzylzmon+vwdOAIWKlUkP0USJaIYhbigrjHMtyWgv4BfhyuAWUH9bKH5FUQC3nVtD1HLZlk8rQIDAQAB';
+  // static const List<String> iapIdtest = ['android.test.purchased'];
+  static const List<String> iapId = ['burger', 'beer', 'donate'];
   List<IAPItem> _items = [];
 
   @override
@@ -44,7 +43,7 @@ class _DonateState extends State<Donate> {
   }
 
   Future<Null> getProducts() async {
-    List<IAPItem> items = await FlutterInappPurchase.getProducts([iapId]);
+    List<IAPItem> items = await FlutterInappPurchase.getProducts(iapId);
     for (var item in items) {
       print('${item.toString()}');
       this._items.add(item);
@@ -72,56 +71,52 @@ class _DonateState extends State<Donate> {
         ._items
         .map(
           (item) => Container(
-                height: 300.0,
+                height: 150.0,
                 width: double.infinity,
                 child: Card(
-                    child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${item.title}',
-                        style: TextStyle(fontSize: 20.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 5.0,
                       ),
-                    ),
-                    SizedBox(
-                      height: 25.0,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'This is a consumable item.',
-                        style: TextStyle(fontSize: 15.0),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          '${item.title}',
+                          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'This item you can buy multiple times.',
-                        style: TextStyle(fontSize: 15.0),
+                      SizedBox(
+                        height: 10.0,
                       ),
-                    ),
-                    SizedBox(
-                      height: 25.0,
-                    ),
-                    MaterialButton(
-                      height: 50.0,
-                      color: Colors.pink,
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      onPressed: () => buyProduct(item),
-                      child: Text(
-                        'Donate ${item.price} ${item.currency}',
-                        style: TextStyle(
-                            fontSize: 12.0, fontWeight: FontWeight.bold),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          '${item.description}',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                )),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      MaterialButton(
+                        height: 50.0,
+                        color: Colors.pink,
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        onPressed: () => buyProduct(item),
+                        child: Text(
+                          '${item.price} ${item.currency}',
+                          style: TextStyle(
+                              fontSize: 12.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
         )
         .toList();
